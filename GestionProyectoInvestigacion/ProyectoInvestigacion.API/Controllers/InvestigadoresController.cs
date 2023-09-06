@@ -23,6 +23,17 @@ namespace ProyectoInvestigacion.API.Controllers
             return Ok(await _context.Investigadores.ToListAsync());
         }
 
+        [HttpGet("{id}")]//get por parametro
+        public async Task<ActionResult> Get(int id)
+        {
+            var country = await _context.Investigadores.FirstOrDefaultAsync(x => x.Id == id);
+            if (country == null)
+            {
+                return NotFound();
+            }
+            return Ok(country);
+        }
+
         [HttpPost]
         public async Task<ActionResult> Post(Investigador investigador) //siempre los post son iguales, solo cambia el nombre de la entidad
         {
