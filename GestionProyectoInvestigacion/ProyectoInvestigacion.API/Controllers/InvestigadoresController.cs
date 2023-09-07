@@ -26,12 +26,12 @@ namespace ProyectoInvestigacion.API.Controllers
         [HttpGet("{id}")]//get por parametro
         public async Task<ActionResult> Get(int id)
         {
-            var country = await _context.Investigadores.FirstOrDefaultAsync(x => x.Id == id);
-            if (country == null)
+            var investigador = await _context.Investigadores.FirstOrDefaultAsync(x => x.Id == id);
+            if (investigador == null)
             {
                 return NotFound();
             }
-            return Ok(country);
+            return Ok(investigador);
         }
 
         [HttpPost]
